@@ -14,6 +14,18 @@ public enum ChooseType{
     case number
 }
 
+class Words: Object {
+    dynamic var id = ""
+    dynamic var word = ""
+    dynamic var property = ""
+    dynamic var cword = ""
+    dynamic var correctCount = 0
+    dynamic var wrongCount = 0
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
 
 class WordViewController: UIViewController {
     
@@ -122,7 +134,17 @@ class WordViewController: UIViewController {
                     let arrayWord: [String] = line.components(separatedBy: CharacterSet(charactersIn:"\t"))     //以tab切分，将每个单词的各元素存放在数组中
                     
                     wordArray.append(arrayWord)
-                    //print(wordArray)
+                    
+                    let word = Words()
+                    word.id = arrayWord[0]
+                    word.word = arrayWord[1]
+                    word.property = arrayWord[2]
+                    word.cword = arrayWord[3]
+                    
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.add(word, update: true)
+                    }
 
                     }
                 }
@@ -145,6 +167,10 @@ class WordViewController: UIViewController {
                 }
 
             }
+
+            let realm = try! Realm()
+            let listDBArray = realm.objects(Words.self).filter("word BEGINSWITH \(sendletter!)")
+            showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
             
         case .number:
             let wordnum = sendnumber + sendcount
@@ -162,7 +188,12 @@ class WordViewController: UIViewController {
             }
             
             showwordLable.text = "\(listArray[0][0])\t\t\(listArray[0][2])\t\t\(listArray[0][3])"
-
+            
+            let realm = try! Realm()
+            let listDBArray = realm.objects(Words.self).filter("id == \(sendnumber)")
+            showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
+            
+            
         }
         
 
