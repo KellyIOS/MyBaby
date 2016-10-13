@@ -42,6 +42,56 @@ class WordViewController: UIViewController {
     @IBOutlet weak var nextwordUIButton: UIButton!
     @IBAction func nextword(_ sender: AnyObject) {
         inputword.becomeFirstResponder()
+        
+        if inputword.text == listDBArray[listIndex].word{
+            judgeUIImage.image = UIImage(named: "right")
+            rightnum += 1
+            errorwordshow.text = ""
+            
+            let word = Words()
+            word.correctCount += 1
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(word, update: true)
+            }
+            
+        }else{
+            judgeUIImage.image = UIImage(named: "error")
+            errornum += 1
+            
+            let word = Words()
+            word.wrongCount += 1
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(word, update: true)
+            }
+            
+            let errorwordlong = inputword.text?.characters.count        //获得输入字符的长度
+            let errorword = NSMutableAttributedString(string: "\(inputword.text!)\t\t\(listDBArray[listIndex].word)")
+            errorword.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, errorwordlong!))       //按要求改变指定字符的颜色
+            errorwordshow.attributedText = errorword
+            
+        }
+        
+        listIndex += 1
+        
+        if listIndex < listDBArray.count{
+            
+            showwordLable.text = " \(listDBArray[listIndex].id)\t\t\(listDBArray[listIndex].property)\t\t\(listDBArray[listIndex].cword)"
+            
+        }else{
+            showwordLable.text = "本次练习结束！\r 正确：\(rightnum)\r 错误：\(errornum) \r 总数：\(listDBArray.count)"
+            nextwordUIButton.isEnabled = false
+            inputword.resignFirstResponder()    //退出手机键盘
+
+        }
+        
+        inputword.text = ""
+        
+        
+        
+        /*===============*/
 
         if inputword.text == listArray[listIndex][1]{
 
@@ -111,6 +161,7 @@ class WordViewController: UIViewController {
     fileprivate var wordArray = [[String]]()    //全部单词表
     fileprivate var listArray = [[String]]()    //所选单词表
     fileprivate var errorArray = [[String]]()   //错误单词表
+    lazy private var listDBArray = try! Realm().objects(Words.self).filter("WORD BEGINSWITH ABC")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,6 +185,8 @@ class WordViewController: UIViewController {
                     let arrayWord: [String] = line.components(separatedBy: CharacterSet(charactersIn:"\t"))     //以tab切分，将每个单词的各元素存放在数组中
                     
                     wordArray.append(arrayWord)
+                    
+                    /*============*/
                     
                     let word = Words()
                     word.id = arrayWord[0]
@@ -168,6 +221,8 @@ class WordViewController: UIViewController {
 
             }
 
+            /*===========*/
+            
             let realm = try! Realm()
             let listDBArray = realm.objects(Words.self).filter("word BEGINSWITH \(sendletter!)")
             showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
@@ -189,10 +244,15 @@ class WordViewController: UIViewController {
             
             showwordLable.text = "\(listArray[0][0])\t\t\(listArray[0][2])\t\t\(listArray[0][3])"
             
-            let realm = try! Realm()
-            let listDBArray = realm.objects(Words.self).filter("id == \(sendnumber)")
-            showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
+            /*==============*/
             
+            let realm = try! Realm()
+            if count < wordnum {
+                listDBArray = realm.objects(Words.self).filter("id == \(count)")
+                count += 1
+            }
+            
+            showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
             
         }
         
