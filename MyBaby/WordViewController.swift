@@ -15,12 +15,13 @@ public enum ChooseType{
 }
 
 class Words: Object {
-    dynamic var id = ""
+    dynamic var id = 0
     dynamic var word = ""
     dynamic var property = ""
     dynamic var cword = ""
     dynamic var correctCount = 0
     dynamic var wrongCount = 0
+    dynamic var tag = 0
     
     override static func primaryKey() -> String? {
         return "id"
@@ -43,28 +44,29 @@ class WordViewController: UIViewController {
     @IBAction func nextword(_ sender: AnyObject) {
         inputword.becomeFirstResponder()
         
-        if inputword.text == listDBArray[listIndex].word{
+       if inputword.text == listDBArray[listIndex].word{
             judgeUIImage.image = UIImage(named: "right")
             rightnum += 1
+        
             errorwordshow.text = ""
-            
-            let word = Words()
-            word.correctCount += 1
-            
+        
             let realm = try! Realm()
             try! realm.write {
-                realm.add(word, update: true)
+                listDBArray[listIndex].correctCount += 1
+                listDBArray[listIndex].tag = 0
             }
             
         }else{
             judgeUIImage.image = UIImage(named: "error")
             errornum += 1
-            
-            let word = Words()
-            word.wrongCount += 1
+        
+//            errorArray.append([listDBArray[listIndex].id,listDBArray[listIndex].word,listDBArray[listIndex].property,listDBArray[listIndex].cword])
+//            print(errorArray)
+    
             let realm = try! Realm()
             try! realm.write {
-                realm.add(word, update: true)
+                listDBArray[listIndex].wrongCount += 1
+                listDBArray[listIndex].tag = 1
             }
             
             let errorwordlong = inputword.text?.characters.count        //获得输入字符的长度
@@ -81,6 +83,7 @@ class WordViewController: UIViewController {
             showwordLable.text = " \(listDBArray[listIndex].id)\t\t\(listDBArray[listIndex].property)\t\t\(listDBArray[listIndex].cword)"
             
         }else{
+            errorwordshow.text = ""
             showwordLable.text = "本次练习结束！\r 正确：\(rightnum)\r 错误：\(errornum) \r 总数：\(listDBArray.count)"
             nextwordUIButton.isEnabled = false
             inputword.resignFirstResponder()    //退出手机键盘
@@ -89,9 +92,7 @@ class WordViewController: UIViewController {
         
         inputword.text = ""
         
-        
-        
-        /*===============*/
+        /*以下方法为数组方式存放单词数据
 
         if inputword.text == listArray[listIndex][1]{
 
@@ -122,7 +123,7 @@ class WordViewController: UIViewController {
 
         }
         
-        inputword.text = ""
+        inputword.text = ""*/
        
     }
     
@@ -130,7 +131,24 @@ class WordViewController: UIViewController {
     @IBOutlet weak var errorlist: UIButton!
     @IBAction func errorlistButton(_ sender: AnyObject) {
         inputword.becomeFirstResponder()
+        errorwordshow.text = ""
         
+        if errornum == 0{
+            showwordLable.textColor = UIColor.red
+            showwordLable.text = "你真棒！"
+            nextwordUIButton.isEnabled = false
+        }else{
+            let realm = try! Realm()
+            listDBArray = realm.objects(Words.self).filter("tag == 1")
+            listIndex = 0
+            rightnum = 0
+            errornum = 0
+            nextwordUIButton.isEnabled = true
+            showwordLable.text = "\(listDBArray[listIndex].id)\t\t\(listDBArray[listIndex].property)\t\t\(listDBArray[listIndex].cword)"
+            print(listDBArray[listIndex])
+        }
+       
+        /* 以下方法为使用数组的方式存放数据=====
         if errorArray.count == 0{
             showwordLable.textColor = UIColor.red
             showwordLable.text = "你真棒！"
@@ -146,7 +164,7 @@ class WordViewController: UIViewController {
             showwordLable.text = "\(listArray[0][0])\t\t\(listArray[0][2])\t\t\(listArray[0][3])"
 
         errorArray.removeAll()
-        }
+        }*/
     }
     
     
@@ -158,10 +176,10 @@ class WordViewController: UIViewController {
     var errornum: Int = 0
     var listIndex: Int = 0
     
-    fileprivate var wordArray = [[String]]()    //全部单词表
-    fileprivate var listArray = [[String]]()    //所选单词表
-    fileprivate var errorArray = [[String]]()   //错误单词表
-    lazy private var listDBArray = try! Realm().objects(Words.self).filter("WORD BEGINSWITH ABC")
+    private var wordArray = [[String]]()    //全部单词表
+    private var listArray = [[String]]()    //所选单词表
+    private var errorArray = [[]]   //错误单词表
+    lazy private var listDBArray = try! Realm().objects(Words.self).filter("word BEGINSWITH ABC")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,7 +190,9 @@ class WordViewController: UIViewController {
         //self.inputword.keyboardDistanceFromTextField = 500
         
         //整理文本文件，并将最终结果存放在数组wordArray里
-        if let path : String = Bundle.main.path(forResource: "EnglishWords", ofType: "txt") {
+        
+        /* 以下方法为将单词数据存放入数组
+       if let path : String = Bundle.main.path(forResource: "EnglishWords", ofType: "txt") {
             
             do {
                 let fileContent = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
@@ -185,33 +205,20 @@ class WordViewController: UIViewController {
                     let arrayWord: [String] = line.components(separatedBy: CharacterSet(charactersIn:"\t"))     //以tab切分，将每个单词的各元素存放在数组中
                     
                     wordArray.append(arrayWord)
-                    
-                    /*============*/
-                    
-                    let word = Words()
-                    word.id = arrayWord[0]
-                    word.word = arrayWord[1]
-                    word.property = arrayWord[2]
-                    word.cword = arrayWord[3]
-                    
-                    let realm = try! Realm()
-                    try! realm.write {
-                        realm.add(word, update: true)
-                    }
-
                     }
                 }
                 
             catch {
                 print(error)
             }
-        }
+        }*/
+        
         
         //处理上一页面传回的查询数据，使用枚举方式
         
         switch type {
         case .letter:
-            for word in wordArray{
+           /* for word in wordArray{
 
                 if word[1].hasPrefix(sendletter!.lowercased()) || word[1].hasPrefix(sendletter!.uppercased()) {
                     
@@ -221,14 +228,14 @@ class WordViewController: UIViewController {
 
             }
 
-            /*===========*/
+            以数组的方式存放单词数据的方法 */
             
             let realm = try! Realm()
-            let listDBArray = realm.objects(Words.self).filter("word BEGINSWITH \(sendletter!)")
+            listDBArray = realm.objects(Words.self).filter("word BEGINSWITH \'\(sendletter!)\'")
             showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
             
         case .number:
-            let wordnum = sendnumber + sendcount
+           /* let wordnum = sendnumber + sendcount
             var count = sendnumber
             for word in wordArray{
                 
@@ -244,13 +251,10 @@ class WordViewController: UIViewController {
             
             showwordLable.text = "\(listArray[0][0])\t\t\(listArray[0][2])\t\t\(listArray[0][3])"
             
-            /*==============*/
+            以数组的方式存放单词数据的方法 */
             
             let realm = try! Realm()
-            if count < wordnum {
-                listDBArray = realm.objects(Words.self).filter("id == \(count)")
-                count += 1
-            }
+            listDBArray = realm.objects(Words.self).filter("id >= \(sendnumber) && id < \(sendnumber+sendcount)")
             
             showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
             

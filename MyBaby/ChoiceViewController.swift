@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 func RGBA (_ rgbValue: UInt32, alphaValue: CGFloat) ->UIColor {
     return UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -109,8 +110,6 @@ class ChoiceViewController: UIViewController {
         
     }
     
-    
-
     override func viewDidLoad(){
         
         super.viewDidLoad()
@@ -130,6 +129,38 @@ class ChoiceViewController: UIViewController {
         onehundredButton.setBackgroundImage(UIImage.imageWithColor(RGBA(0x9DCBF2, alphaValue: 1.0), frame: CGRect(x: 0,y: 0,width: 60,height: 25)), for: .selected)
        // 直接使用系统颜色onehundredButton.setBackgroundImage(UIImage.imageWithColor(UIColor.redColor(),frame: CGRect()), forState: .Selected)
         
+        if let path : String = Bundle.main.path(forResource: "EnglishWords", ofType: "txt") {
+            
+            do {
+                let fileContent = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+                
+                let arrayLine: [String] = fileContent.components(separatedBy: CharacterSet.newlines)    //按行切分，每行为一个数组即一个单词全部元素
+                
+                let realm = try! Realm()
+                let item = realm.objects(Words.self)
+                if item.count != arrayLine.count{
+                    for line in arrayLine{
+                        
+                        let arrayWord: [String] = line.components(separatedBy: CharacterSet(charactersIn:"\t"))     //以tab切分，将每个单词的各元素存放在数组中
+                        
+                        //wordArray.append(arrayWord)
+                        
+                        let word = Words()
+                        word.id = (NumberFormatter().number(from: arrayWord[0])?.intValue)!
+                        word.word = arrayWord[1]
+                        word.property = arrayWord[2]
+                        word.cword = arrayWord[3]
+                        try! realm.write {
+                            realm.add(word, update: true)
+                        }
+                    }
+                }
+            }
+                
+            catch {
+                print(error)
+            }
+        }
         
         // Do any additional setup after loading the view.
     }
