@@ -59,9 +59,6 @@ class WordViewController: UIViewController {
         }else{
             judgeUIImage.image = UIImage(named: "error")
             errornum += 1
-        
-//            errorArray.append([listDBArray[listIndex].id,listDBArray[listIndex].word,listDBArray[listIndex].property,listDBArray[listIndex].cword])
-//            print(errorArray)
     
             let realm = try! Realm()
             try! realm.write {
@@ -84,7 +81,8 @@ class WordViewController: UIViewController {
             
         }else{
             errorwordshow.text = ""
-            showwordLable.text = "本次练习结束！\r 正确：\(rightnum)\r 错误：\(errornum) \r 总数：\(listDBArray.count)"
+            
+            showwordLable.text = "本次练习结束！\r 正确：\(rightnum)\r 错误：\(errornum) \r 总数：\(wrongnum)"
             nextwordUIButton.isEnabled = false
             inputword.resignFirstResponder()    //退出手机键盘
 
@@ -133,19 +131,22 @@ class WordViewController: UIViewController {
         inputword.becomeFirstResponder()
         errorwordshow.text = ""
         
-        if errornum == 0{
+        let realm = try! Realm()
+        listDBArray = realm.objects(Words.self).filter("tag == 1")
+        wrongnum = listDBArray.count
+        
+        if listDBArray.count == 0{
             showwordLable.textColor = UIColor.red
             showwordLable.text = "你真棒！"
             nextwordUIButton.isEnabled = false
         }else{
-            let realm = try! Realm()
-            listDBArray = realm.objects(Words.self).filter("tag == 1")
+            
             listIndex = 0
             rightnum = 0
             errornum = 0
             nextwordUIButton.isEnabled = true
             showwordLable.text = "\(listDBArray[listIndex].id)\t\t\(listDBArray[listIndex].property)\t\t\(listDBArray[listIndex].cword)"
-            print(listDBArray[listIndex])
+
         }
        
         /* 以下方法为使用数组的方式存放数据=====
@@ -175,6 +176,7 @@ class WordViewController: UIViewController {
     var rightnum: Int = 0
     var errornum: Int = 0
     var listIndex: Int = 0
+    var wrongnum: Int = 0
     
     private var wordArray = [[String]]()    //全部单词表
     private var listArray = [[String]]()    //所选单词表
@@ -233,6 +235,7 @@ class WordViewController: UIViewController {
             let realm = try! Realm()
             listDBArray = realm.objects(Words.self).filter("word BEGINSWITH \'\(sendletter!)\'")
             showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
+            wrongnum = listDBArray.count
             
         case .number:
            /* let wordnum = sendnumber + sendcount
@@ -257,6 +260,7 @@ class WordViewController: UIViewController {
             listDBArray = realm.objects(Words.self).filter("id >= \(sendnumber) && id < \(sendnumber+sendcount)")
             
             showwordLable.text = "\(listDBArray[0].id)\t\t\(listDBArray[0].property)\t\t\(listDBArray[0].cword)"
+            wrongnum = listDBArray.count
             
         }
         

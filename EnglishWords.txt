@@ -36,7 +36,7 @@
 36	after a while	phr.	过了一会儿
 37	after class	phr.	课后
 38	after school	phr.	放学后，下课后
-39	afternoon		n.	下午，午后
+39	afternoon	n.	下午，午后
 40	again	adv.	又，再
 41	again and again	phr.	再三地，一再地，反复地
 42	against	prep.	与...对抗，对着
@@ -1205,7 +1205,7 @@
 1205	neighbour	n.	邻居
 1206	neighbourhood	n.	四邻，街坊，邻近
 1207	neither	adj. & pron	（两者）都不
-1208	neither... nor...	phr.	既不...也不...
+1208	neither...nor...	phr.	既不...也不...
 1209	nervous	adj.	紧张不安的
 1210	never	adv.	从来，决不
 1211	never mind	phr.	没关系
@@ -1255,49 +1255,49 @@
 1255	of	prep	...的
 1256	of course	phr.	当然，自然的事
 1257	offer	v. & n.	拿出，提供
-1259	office	n.	办公室
-1260	oil	n.	油
-1261	OK	adv.	对，不错，可以
-1262	old	adj.	老的，...岁的
-1263	Olympic	adj.	奥林匹克的
-1264	on	prep	在，在...上，关于
-1265	on display	phr.	陈列，展示
-1266	on duty	phr.	值日
-1267	on earth	phr.	在地球上
-1268	on foot	phr.	走路，步行
-1269	on one's way to	phr.	在...的途中
-1270	on show	phr.	展出
-1271	on the left/right side	phr.	在左（右）边
-1272	on time	phr.	准时
-1273	on watch	phr.	值班，守望
-1274	once	adv.	一次，曾经，以前
-1275	once upon a time	phr.	从前，很早以前
-1276	one	num.	一
-1277	one	pron.	用来代表单数的人或物
-1278	one day	phr.	(过去或将来)有一天，某一天
-1279	one-way	adj.	单程的，单行的
-1280	onion	n.	洋葱
-1281	online	adj.& adv.	在线，上网
-1282	only	adv.	仅仅，只
-1283	onto	prep.	在...上面，到...上面
-1284	open	adj.	开着的
-1285	open	n. & v.	打开
-1286	open up	phr.	开设，开业，开放
-1287	opera	n.	歌剧
-1288	opposite	adj.	对面的，相反的
-1289	or	conj.	或者，还是
-1290	orange	adj.& n.	橙色（的）
-1291	orange	n.	橙子，橘子
-1292	order	n. & v.	订购，点菜，订购单，定购，一份菜
-1293	ordinary	adj.	普通的，通常的
-1294	other	adj.	其他的，别的
-1295	ouch	int.	(突然感到病痛时发出的声音)啊呀
-1296	our	pron.	我们的
-1297	ours	pron.	我们的
-1298	ourselves	pron.	我们自己
-1299	out	adv.	在外
-1300	out of	prep	从...向外，从...往外
-1301	outdoor	adj.	户外的，野外的
+1258	office	n.	办公室
+1259	oil	n.	油
+1260	OK	adv.	对，不错，可以
+1261	old	adj.	老的，...岁的
+1262	Olympic	adj.	奥林匹克的
+1263	on	prep	在，在...上，关于
+1264	on display	phr.	陈列，展示
+1265	on duty	phr.	值日
+1266	on earth	phr.	在地球上
+1267	on foot	phr.	走路，步行
+1268	on one's way to	phr.	在...的途中
+1269	on show	phr.	展出
+1270	on the left/right side	phr.	在左（右）边
+1271	on time	phr.	准时
+1272	on watch	phr.	值班，守望
+1273	once	adv.	一次，曾经，以前
+1274	once upon a time	phr.	从前，很早以前
+1275	one	num.	一
+1276	one	pron.	用来代表单数的人或物
+1277	one day	phr.	(过去或将来)有一天，某一天
+1278	one-way	adj.	单程的，单行的
+1279	onion	n.	洋葱
+1280	online	adj.& adv.	在线，上网
+1281	only	adv.	仅仅，只
+1282	onto	prep.	在...上面，到...上面
+1283	open	adj.	开着的
+1284	open	n. & v.	打开
+1285	open up	phr.	开设，开业，开放
+1286	opera	n.	歌剧
+1287	opposite	adj.	对面的，相反的
+1288	or	conj.	或者，还是
+1289	orange	adj.& n.	橙色（的）
+1290	orange	n.	橙子，橘子
+1291	order	n. & v.	订购，点菜，订购单，定购，一份菜
+1292	ordinary	adj.	普通的，通常的
+1293	other	adj.	其他的，别的
+1294	ouch	int.	(突然感到病痛时发出的声音)啊呀
+1295	our	pron.	我们的
+1296	ours	pron.	我们的
+1297	ourselves	pron.	我们自己
+1298	out	adv.	在外
+1299	out of	prep	从...向外，从...往外
+1300	outdoor	adj.	户外的，野外的
 1302	outside	prep.& adv.	在...外
 1303	over	adv.	结束，完了，在那边，在另一边
 1304	over there	phr.	在那边

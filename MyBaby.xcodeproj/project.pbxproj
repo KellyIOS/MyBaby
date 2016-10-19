@@ -24,7 +24,7 @@
 		4B1A3E1C1DA8C1AC00301A15 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		4BA798911D6409AD00BC9CA2 /* WordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewController.swift; sourceTree = "<group>"; };
 		4BA798931D643C1200BC9CA2 /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
-		4BA798971D6AD7D300BC9CA2 /* EnglishWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EnglishWords.txt; path = ../../../EnglishWords.txt; sourceTree = "<group>"; };
+		4BA798971D6AD7D300BC9CA2 /* EnglishWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = EnglishWords.txt; path = ../EnglishWords.txt; sourceTree = "<group>"; };
 		4BBB33B31D61950D0032F336 /* MyBaby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBaby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BBB33B61D61950D0032F336 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BBB33B81D61950D0032F336 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
