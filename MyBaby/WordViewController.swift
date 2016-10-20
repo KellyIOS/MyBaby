@@ -44,35 +44,59 @@ class WordViewController: UIViewController {
     @IBAction func nextword(_ sender: AnyObject) {
         inputword.becomeFirstResponder()
         
-       if inputword.text == listDBArray[listIndex].word{
-            judgeUIImage.image = UIImage(named: "right")
-            rightnum += 1
-        
-            errorwordshow.text = ""
-        
-            let realm = try! Realm()
-            try! realm.write {
-                listDBArray[listIndex].correctCount += 1
-                listDBArray[listIndex].tag = 0
+        if isNormal == true{
+            if inputword.text == listDBArray[listIndex].word{
+                judgeUIImage.image = UIImage(named: "right")
+                rightnum += 1
+                
+                errorwordshow.text = ""
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    listDBArray[listIndex].correctCount += 1
+                    listDBArray[listIndex].tag = 0
+                }
+                
+            }else{
+                judgeUIImage.image = UIImage(named: "error")
+                errornum += 1
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    listDBArray[listIndex].wrongCount += 1
+                    listDBArray[listIndex].tag = 1
+                }
+                
+                let errorwordlong = inputword.text?.characters.count        //获得输入字符的长度
+                let errorword = NSMutableAttributedString(string: "\(inputword.text!)\t\t\(listDBArray[listIndex].word)")
+                errorword.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, errorwordlong!))       //按要求改变指定字符的颜色
+                errorwordshow.attributedText = errorword
+                
             }
             
         }else{
-            judgeUIImage.image = UIImage(named: "error")
-            errornum += 1
-    
-            let realm = try! Realm()
-            try! realm.write {
-                listDBArray[listIndex].wrongCount += 1
-                listDBArray[listIndex].tag = 1
+            if inputword.text == listDBArray[listIndex].word{
+                judgeUIImage.image = UIImage(named: "right")
+                rightnum += 1
+                errorwordshow.text = ""
+                let realm = try! Realm()
+                try! realm.write {
+                    listDBArray[listIndex].tag = 2
+                }
+                
+            }else{
+                judgeUIImage.image = UIImage(named: "error")
+                errornum += 1
+                
+                let errorwordlong = inputword.text?.characters.count        //获得输入字符的长度
+                let errorword = NSMutableAttributedString(string: "\(inputword.text!)\t\t\(listDBArray[listIndex].word)")
+                errorword.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, errorwordlong!))       //按要求改变指定字符的颜色
+                errorwordshow.attributedText = errorword
+                
             }
             
-            let errorwordlong = inputword.text?.characters.count        //获得输入字符的长度
-            let errorword = NSMutableAttributedString(string: "\(inputword.text!)\t\t\(listDBArray[listIndex].word)")
-            errorword.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSMakeRange(0, errorwordlong!))       //按要求改变指定字符的颜色
-            errorwordshow.attributedText = errorword
-            
         }
-        
+       
         listIndex += 1
         
         if listIndex < listDBArray.count{
@@ -85,10 +109,11 @@ class WordViewController: UIViewController {
             showwordLable.text = "本次练习结束！\r 正确：\(rightnum)\r 错误：\(errornum) \r 总数：\(wrongnum)"
             nextwordUIButton.isEnabled = false
             inputword.resignFirstResponder()    //退出手机键盘
-
+            
         }
         
         inputword.text = ""
+        
         
         /*以下方法为数组方式存放单词数据
 
@@ -130,17 +155,29 @@ class WordViewController: UIViewController {
     @IBAction func errorlistButton(_ sender: AnyObject) {
         inputword.becomeFirstResponder()
         errorwordshow.text = ""
+        isNormal = false
         
         let realm = try! Realm()
-        listDBArray = realm.objects(Words.self).filter("tag == 1")
+        let status2 = realm.objects(Words.self).filter("tag == 2")
+        let item = status2.count
+        if item != 0{
+            try! realm.write{
+                for item in status2{
+                    item.tag = 0
+                }
+            }
+        }
+
+        let wrongarray = realm.objects(Words.self).filter("tag == 1")
+        
+        listDBArray = realm.objects(Words.self).filter("tag == 1 || tag == 2")
         wrongnum = listDBArray.count
         
-        if listDBArray.count == 0{
+        if wrongarray.count == 0{
             showwordLable.textColor = UIColor.red
             showwordLable.text = "你真棒！"
             nextwordUIButton.isEnabled = false
         }else{
-            
             listIndex = 0
             rightnum = 0
             errornum = 0
@@ -168,7 +205,6 @@ class WordViewController: UIViewController {
         }*/
     }
     
-    
     var type: ChooseType = .letter //枚举类型成员变量，用于字母、数字选择
     var sendletter: String?
     var sendnumber: Int = 1
@@ -177,10 +213,11 @@ class WordViewController: UIViewController {
     var errornum: Int = 0
     var listIndex: Int = 0
     var wrongnum: Int = 0
+    var isNormal = true
     
-    private var wordArray = [[String]]()    //全部单词表
-    private var listArray = [[String]]()    //所选单词表
-    private var errorArray = [[]]   //错误单词表
+    //    private var wordArray = [[String]]()    //全部单词表
+    //    private var listArray = [[String]]()    //所选单词表
+    //    private var errorArray = [[]]   //错误单词表
     lazy private var listDBArray = try! Realm().objects(Words.self).filter("word BEGINSWITH ABC")
     
     override func viewDidLoad() {
