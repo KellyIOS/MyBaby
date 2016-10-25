@@ -37,7 +37,22 @@ class WordViewController: UIViewController {
     
     @IBOutlet weak var RecordUIButton: UIButton!
     @IBAction func Record(_ sender: AnyObject) {
-        performSegue(withIdentifier: "showrecordviewcontroller", sender: self)
+        //performSegue(withIdentifier: "showrecordviewcontroller", sender: self)
+        let realm = try! Realm()
+        listDBArray = realm.objects(Words.self).filter("wrongCount >= 3")
+        isNormal = true
+        listIndex = 0
+        wrongnum = listDBArray.count
+        errorwordshow.text = ""
+        
+        if listDBArray.count != 0 {
+            showwordLable.text = " \(listDBArray[listIndex].id)\t\t\(listDBArray[listIndex].property)\t\t\(listDBArray[listIndex].cword)"
+        }else{
+            showwordLable.textColor = UIColor.red
+            showwordLable.text = "你真棒！"
+            nextwordUIButton.isEnabled = false
+        }
+        
     }
     
     @IBOutlet weak var nextwordUIButton: UIButton!
