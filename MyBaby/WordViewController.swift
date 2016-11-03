@@ -21,7 +21,7 @@ class Words: Object {
     dynamic var cword = ""
     dynamic var correctCount = 0
     dynamic var wrongCount = 0
-    dynamic var tag = 0
+    dynamic var tag = 0     //0-对   1-错     2-改对
     
     override static func primaryKey() -> String? {
         return "id"
