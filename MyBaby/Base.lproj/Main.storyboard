@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WEp-bb-LO3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WEp-bb-LO3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,12 +39,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_head" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-TL-yWV">
+                                <rect key="frame" x="96.5" y="242.5" width="182" height="182"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="182" id="7Jm-eG-TWu"/>
                                     <constraint firstAttribute="width" constant="182" id="VAo-nI-koZ"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Kevin_Zhao" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6P-0m-U8X">
+                                <rect key="frame" x="107.5" y="474.5" width="160" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="kZk-F1-nHK"/>
                                     <constraint firstAttribute="width" constant="160" id="mOO-10-2tB"/>
@@ -51,6 +56,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmy-A0-oOh">
+                                <rect key="frame" x="265" y="591" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="D7L-yN-ypa"/>
                                 </constraints>
@@ -60,6 +66,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Welcome Back !" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEy-vf-5bA">
+                                <rect key="frame" x="-12.5" y="124" width="400" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="U3Q-ca-gmq"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="YYz-Qj-mu9"/>
@@ -106,6 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-HF-8k1">
+                                <rect key="frame" x="30" y="264" width="80" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="HZp-aB-z6n"/>
                                     <constraint firstAttribute="width" constant="80" id="UeQ-mg-DFv"/>
@@ -121,6 +129,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNb-Bb-nUj">
+                                <rect key="frame" x="30" y="319" width="80" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="oZu-V7-PkB"/>
                                     <constraint firstAttribute="height" constant="35" id="vQs-lM-3bY"/>
@@ -131,6 +140,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入要记忆的单词开始序号" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="wNq-Nf-aum">
+                                <rect key="frame" x="125" y="319" width="220" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Uwq-kj-bTU"/>
                                     <constraint firstAttribute="width" constant="220" id="aUk-rs-K9z"/>
@@ -139,6 +149,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="light"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-0Y-znC">
+                                <rect key="frame" x="255" y="603" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="GyU-Kw-4BR"/>
                                     <constraint firstAttribute="height" constant="30" id="vct-gU-s6R"/>
@@ -149,6 +160,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltR-wy-RfG">
+                                <rect key="frame" x="230" y="380" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="DC6-qQ-OSS"/>
                                     <constraint firstAttribute="height" constant="30" id="ZIU-sB-rp9"/>
@@ -159,6 +171,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入要记忆单词的开头字母" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="CCa-Lg-mtG">
+                                <rect key="frame" x="125" y="264" width="220" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3IW-cJ-95q"/>
                                     <constraint firstAttribute="width" constant="220" id="JLT-rL-wID"/>
@@ -167,6 +180,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iM-Q7-npN">
+                                <rect key="frame" x="145" y="603" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BVB-bT-fQn"/>
                                     <constraint firstAttribute="width" constant="80" id="Cj0-6b-eym"/>
@@ -177,6 +191,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-et-5HF">
+                                <rect key="frame" x="150" y="380" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1bX-Wi-WAI"/>
                                     <constraint firstAttribute="width" constant="60" id="424-hB-MM3"/>
@@ -187,6 +202,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="华英英语四级单词记忆练习" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wiY-2a-8wi">
+                                <rect key="frame" x="-12.5" y="124" width="400" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9EP-QU-MOB"/>
                                     <constraint firstAttribute="width" constant="400" id="atu-6K-eLv"/>
@@ -254,6 +270,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-0K-EKg">
+                                <rect key="frame" x="160" y="557" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="AZa-f9-fd8"/>
                                     <constraint firstAttribute="height" constant="30" id="jsv-xS-meb"/>
@@ -264,6 +281,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXi-MH-dbT">
+                                <rect key="frame" x="37.5" y="104" width="300" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Q7A-Wl-Cyu"/>
                                     <constraint firstAttribute="height" constant="100" id="vvZ-06-Mz0"/>
@@ -273,12 +291,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bill" translatesAutoresizingMaskIntoConstraints="NO" id="V7m-9Z-bHd">
+                                <rect key="frame" x="245" y="239" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ep2-os-lyi"/>
                                     <constraint firstAttribute="width" constant="50" id="yBN-3o-GIr"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入内容" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-3t-x3H">
+                                <rect key="frame" x="37.5" y="234" width="300" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="fAu-wV-WOf"/>
                                     <constraint firstAttribute="width" constant="300" id="nn0-er-3x8"/>
@@ -287,6 +307,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGn-qz-IT9">
+                                <rect key="frame" x="255" y="557" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="KrT-LW-Aif"/>
                                     <constraint firstAttribute="height" constant="30" id="kUr-hu-3bi"/>
@@ -296,9 +317,10 @@
                                     <action selector="errorlistButton:" destination="cr5-mu-L6A" eventType="touchUpInside" id="t8Z-T7-dPH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIn-JN-2Ez">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIn-JN-2Ez">
+                                <rect key="frame" x="37.5" y="324" width="300" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Van-e4-lED"/>
+                                    <constraint firstAttribute="height" constant="80" id="Van-e4-lED"/>
                                     <constraint firstAttribute="width" constant="300" id="uJx-Mc-qWo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -306,6 +328,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0H5-JN-Hmy">
+                                <rect key="frame" x="65" y="557" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Bmh-Da-STk"/>
                                     <constraint firstAttribute="width" constant="80" id="PtG-vw-PwT"/>
@@ -363,17 +386,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S8m-L7-HE8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="record" textLabel="2ss-6r-S4o" style="IBUITableViewCellStyleDefault" id="Uv4-1e-eXD">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uv4-1e-eXD" id="ZIb-7F-Njq">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ss-6r-S4o">
-                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
